@@ -1,0 +1,295 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    max-width: 80vh;
+    margin: auto;
+    padding: 1rem;
+    background-color: var(--bg-alt);
+    color: var(--fg-main);
+}
+
+header {
+    color: var(--fg-alt);
+    text-align: center;
+}
+
+nav {
+    height: 2rem;
+    display: flex;
+    margin-bottom: 0.8rem;
+}
+
+nav ul {
+    padding: 0;
+    list-style-type: none;
+    flex: 2;
+    display: flex;
+}
+
+nav li {
+    display: inline;
+    text-align: center;
+    flex: 1;
+}
+
+nav a {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+    color: var(--cyan);
+}
+
+a:hover,
+a:focus {
+    background-color: var(--cyan);
+    color: var(--bg-main);
+}
+
+a:visited {
+    color: var(--blue);
+}
+
+a:visited:hover,
+a:visited:focus {
+    background-color: var(--blue);
+    color: var(--bg-main);
+}
+
+section,
+footer {
+    background-color: var(--bg-main);
+    margin: 1rem;
+    padding: 1rem;
+    border: 0.05rem solid var(--fg-dim);
+    border-radius: 0.5rem;
+}
+
+footer {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.05rem solid var(--fg-dim);
+    border-radius: 0.2rem;
+    box-sizing: border-box;
+    background-color: var(--bg-active);
+    color: var(--fg-main);
+}
+
+input[type="checkbox"] {
+    background-color: var(--bg-dim);
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    font-family: inherit;
+}
+
+.tags-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tag-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+button {
+    background-color: var(--blue);
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.2rem;
+}
+
+button:hover {
+    background-color: var(--blue-cooler);
+}
+
+.delete-btn {
+    background-color: var(--red);
+}
+
+.delete-btn:hover {
+    background-color: var(--red-cooler);
+}
+
+.post {
+    border: 0.05rem solid var(--fg-dim);
+    border-radius: 0.5rem;
+    margin-bottom: 1.1rem;
+    padding: 1rem;
+    background-color: var(--bg-dim);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.post-tags {
+    margin: 0.8rem 0;
+}
+
+.tag {
+    background-color: var(--bg-inactive);
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.4rem;
+    font-size: 0.8rem;
+    border: 0.05rem solid var(--fg-dim);
+    border-radius: 0.1rem;
+}
+
+.post-content {
+    margin: 0.8rem 0;
+    line-height: 1.5;
+}
+
+.comment {
+    background-color: var(--bg-cyan-subtle);
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    border-left: 3px solid var(--cyan-cooler);
+    border-radius: 0.2rem
+}
+
+.comment-form {
+    margin-top: 0.8rem;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.05rem solid var(--fg-dim);
+    box-sizing: border-box;
+    margin-bottom: 0.7rem;
+}
+
+.date {
+    font-size: 0.7rem;
+}
+
+.confirmation {
+    color: var(--red);
+    font-weight: bold;
+    margin-left: 0.8rem;
+}
+
+:root {
+    --bg-main: #edf4f8;
+    --fg-main: #151a27;
+    --bg-dim: #e0e7ef;
+    --fg-dim: #676470;
+    --bg-alt: #cfd8e3;
+    --fg-alt: #3f4f99;
+    --bg-active: #afb8c3;
+    --bg-inactive: #e6ecf2;
+    --red: #c3303a;
+    --red-warmer: #d00000;
+    --red-cooler: #b02440;
+    --red-faint: #8b4052;
+    --green: #007010;
+    --green-warmer: #3a6f00;
+    --green-cooler: #007047;
+    --green-faint: #4a763f;
+    --yellow: #805a1f;
+    --yellow-warmer: #8b4400;
+    --yellow-cooler: #78542f;
+    --yellow-faint: #7f4f4a;
+    --blue: #375cc6;
+    --blue-warmer: #444fcf;
+    --blue-cooler: #003faf;
+    --blue-faint: #3a5099;
+    --magenta: #80308f;
+    --magenta-warmer: #9a3a6a;
+    --magenta-cooler: #5f2fba;
+    --magenta-faint: #6a4a9f;
+    --cyan: #1f66af;
+    --cyan-warmer: #305675;
+    --cyan-cooler: #006f70;
+    --cyan-faint: #3f627f;
+    --bg-red-intense: #ff8f88;
+    --bg-green-intense: #96df80;
+    --bg-yellow-intense: #efbf00;
+    --bg-blue-intense: #cfceff;
+    --bg-magenta-intense: #df9fff;
+    --bg-cyan-intense: #88cfd0;
+    --bg-red-subtle: #f0c6cf;
+    --bg-green-subtle: #b0ebca;
+    --bg-yellow-subtle: #e4e498;
+    --bg-blue-subtle: #ccd5f7;
+    --bg-magenta-subtle: #edd3f2;
+    --bg-cyan-subtle: #b2e6f0;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-main: #131c2b;
+        --fg-main: #eaedef;
+        --bg-dim: #1d2c39;
+        --fg-dim: #969faf;
+        --bg-alt: #2a3644;
+        --fg-alt: #90a0dc;
+        --bg-active: #4a5664;
+        --bg-inactive: #1a2331;
+        --red: #ff6f6f;
+        --red-warmer: #ff7a5f;
+        --red-cooler: #ff7788;
+        --red-faint: #eaa4a4;
+        --green: #41bf4f;
+        --green-warmer: #7fce5f;
+        --green-cooler: #30c489;
+        --green-faint: #a9c99f;
+        --yellow: #d0d24f;
+        --yellow-warmer: #f0c060;
+        --yellow-cooler: #cab27f;
+        --yellow-faint: #cac89f;
+        --blue: #57b0ff;
+        --blue-warmer: #70a0ff;
+        --blue-cooler: #12b4ff;
+        --blue-faint: #9acfff;
+        --magenta: #f59acf;
+        --magenta-warmer: #fa90ea;
+        --magenta-cooler: #cf90ff;
+        --magenta-faint: #d4aaf0;
+        --cyan: #2fd0db;
+        --cyan-warmer: #7fcfdf;
+        --cyan-cooler: #65d5a8;
+        --cyan-faint: #99bfcf;
+        --bg-red-intense: #bd1f30;
+        --bg-green-intense: #107840;
+        --bg-yellow-intense: #847020;
+        --bg-blue-intense: #2f5f9f;
+        --bg-magenta-intense: #b05fcf;
+        --bg-cyan-intense: #0280b9;
+        --bg-red-subtle: #6f293a;
+        --bg-green-subtle: #1f523a;
+        --bg-yellow-subtle: #604233;
+        --bg-blue-subtle: #284477;
+        --bg-magenta-subtle: #52336b;
+        --bg-cyan-subtle: #204c68;
+    }
+}
