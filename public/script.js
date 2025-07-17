@@ -104,7 +104,7 @@ function renderPosts(posts) {
                     <form action="">                    
                     <div class="comment-form">
                         <textarea class="comment-input" id="comment-${post.id}" rows="2" placeholder="Digite aqui" required></textarea>
-                        <button onclick="addComment('${post.id}')">Comentar</button>
+                        <button onclick="addComment(event, '${post.id}')">Comentar</button>
                     </div>
                     </form>
                 `;
@@ -167,7 +167,9 @@ function renderComments(postId, comments) {
 }
 
 // Função para adicionar comentário
-async function addComment(postId) {
+async function addComment(e, postId) {
+  e.preventDefault();
+
   const commentInput = document.getElementById(`comment-${postId}`);
   const text = commentInput.value.trim();
 
