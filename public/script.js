@@ -96,9 +96,9 @@ function renderPosts(posts) {
                         <button class="delete-btn" onclick="deletePost('${post.id}')">Excluir</button>
                         </div>
                     </div>
-                    <div class="post-tags">
+                    <p class="post-tags">
                         ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
+                    </p>
                     <p class="post-content">${post.content}</p>
                     <div id="comments-${post.id}"></div>
                     <form action="">                    
