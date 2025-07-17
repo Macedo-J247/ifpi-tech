@@ -22,7 +22,10 @@ Aplicação que implementa um blog com comentários.
     - [x] Tags para postagens
         - Tags são estáticas e client-side, talvez trocar para server-side
     - [x] Filtrar postagens por tags
-    - [ ] HTML e Markdown nos comentários
+    - [ ] Tratar input do usuário
+        - `\n` não funciona
+        - Restringir HTML
+        - Renderizar Markdown
     
 ## Grupo
 
