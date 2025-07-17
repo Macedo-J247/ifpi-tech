@@ -8,7 +8,7 @@ Aplicação que implementa um blog com comentários.
 2. Navege até a pasta `ifpi-tech`
 3. Execute `npm install`
 4. Execute `node app.js`
-5. Abra a página (http://localhost:3000)[http://localhost:3000]
+5. Abra a página [http://localhost:3000](http://localhost:3000)
 
 ## Roadmap
 
