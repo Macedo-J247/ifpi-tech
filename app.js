@@ -2,6 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
+const sanitizeHtml = require('sanitize-html');
+const { marked } = require('marked');
 
 const app = express();
 const PORT = 3000;
@@ -80,11 +82,14 @@ app.post('/api/posts', (req, res) => {
     return res.status(400).json({ error: 'Título e conteúdo são obrigatórios' });
   }
 
+  const titleClean = sanitizeHtml(title);
+  const contentClean = sanitizeHtml(marked(content));
+
   const posts = readPosts();
   const newPost = {
     id: Date.now().toString(),
-    title,
-    content,
+    title: titleClean,
+    content: contentClean,
     tags: tags || [],
     createdAt: new Date().toISOString()
   };
@@ -135,11 +140,13 @@ app.post('/api/posts/:id/comments', (req, res) => {
     return res.status(400).json({ error: 'Texto do comentário é obrigatório' });
   }
 
+  const textClean = sanitizeHtml(marked(text));
+
   const comments = readComments();
   const newComment = {
     id: Date.now().toString(),
     postId: id,
-    text,
+    text: textClean,
     createdAt: new Date().toISOString()
   };
 
