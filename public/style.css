@@ -102,6 +102,10 @@ textarea {
     font-family: inherit;
 }
 
+pre, code {
+    font-family: monospace, monospace;
+}
+
 .tags-group {
     display: flex;
     gap: 1rem;
