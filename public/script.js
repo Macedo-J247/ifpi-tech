@@ -88,10 +88,12 @@ function renderPosts(posts) {
 
     postElement.innerHTML = `
                     <div class="post-header">
-                        <h3>${post.title}</h3>
                         <div>
-                            <span class="date">${date}</span>
-                            <button class="delete-btn" onclick="deletePost('${post.id}')">Excluir</button>
+                        <h3>${post.title}</h3>
+                        <p class="date">${date}</p>
+                        </div>
+                        <div>
+                        <button class="delete-btn" onclick="deletePost('${post.id}')">Excluir</button>
                         </div>
                     </div>
                     <div class="post-tags">
@@ -99,10 +101,12 @@ function renderPosts(posts) {
                     </div>
                     <p class="post-content">${post.content}</p>
                     <div id="comments-${post.id}"></div>
+                    <form action="">                    
                     <div class="comment-form">
-                        <input type="text" class="comment-input" id="comment-${post.id}" placeholder="Digite aqui">
+                        <textarea class="comment-input" id="comment-${post.id}" rows="2" placeholder="Digite aqui" required></textarea>
                         <button onclick="addComment('${post.id}')">Comentar</button>
                     </div>
+                    </form>
                 `;
 
     postsContainer.appendChild(postElement);
@@ -154,8 +158,8 @@ function renderComments(postId, comments) {
     const date = new Date(comment.createdAt).toLocaleDateString('pt-BR');
 
     commentElement.innerHTML = `
-                    <div>${comment.text}</div>
-                    <div class="date">${date}</div>
+                    <p>${comment.text}</p>
+                    <p class="date">${date}</p>
                 `;
 
     commentsContainer.appendChild(commentElement);

@@ -42,18 +42,24 @@
             <div class="form-group">
                 <label>Tags</label>
                 <div class="tags-group">
-                    <div class="tag-checkbox">
-                        <input type="checkbox" id="tech" value="tecnologia">
-                        <label for="tech">Tecnologia</label>
-                    </div>
-                    <div class="tag-checkbox">
-                        <input type="checkbox" id="lifestyle" value="lifestyle">
-                        <label for="lifestyle">Lifestyle</label>
-                    </div>
-                    <div class="tag-checkbox">
-                        <input type="checkbox" id="news" value="noticias">
-                        <label for="news">Notícias</label>
-                    </div>
+                    <p>
+                        <label for="tecnologia">
+                            <input type="checkbox" id="tecnologia" value="tecnologia">
+                            Tecnologia
+                        </label>
+                    </p>
+                    <p>
+                        <label for="empreendedorismo">
+                            <input type="checkbox" id="empreendedorismo" value="empreendedorismo">
+                            Empreendedorismo
+                        </label>
+                    </p>
+                    <p>
+                        <label for="sustentabilidade">
+                            <input type="checkbox" id="sustentabilidade" value="sustentabilidade">
+                            Sustentabilidade
+                        </label>
+                    </p>
                 </div>
             </div>
 
@@ -61,15 +67,15 @@
         </form>
     </section>
 
-    <section>
+    <section id="tag">
         <h2>Filtrar Posts</h2>
         <div class="form-group">
             <label for="tagFilter">Filtrar por tag</label>
             <select id="tagFilter">
                 <option value="todas">Todas</option>
                 <option value="tecnologia">Tecnologia</option>
-                <option value="lifestyle">Lifestyle</option>
-                <option value="noticias">Notícias</option>
+                <option value="empreendedorismo">Empreendedorismo</option>
+                <option value="sustentabilidade">Sustentabilidade</option>
             </select>
         </div>
     </section>

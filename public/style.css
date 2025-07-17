@@ -108,12 +108,6 @@ textarea {
     flex-wrap: wrap;
 }
 
-.tag-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-
 button {
     background-color: var(--blue);
     color: white;
