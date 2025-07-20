@@ -101,7 +101,7 @@ function renderPosts(posts) {
                     </p>
                     <p class="post-content">${post.content}</p>
                     <div id="comments-${post.id}"></div>
-                    <form action="">                    
+                    <form action="">
                     <div class="comment-form">
                         <textarea class="comment-input" id="comment-${post.id}" rows="2" placeholder="Digite aqui" required></textarea>
                         <button onclick="addComment(event, '${post.id}')">Comentar</button>
@@ -152,16 +152,18 @@ function renderComments(postId, comments) {
   commentsContainer.innerHTML = '';
 
   comments.forEach(comment => {
-    const commentElement = document.createElement('div');
+    const commentElement = document.createElement('p');
     commentElement.className = 'comment';
 
-    const date = new Date(comment.createdAt).toLocaleDateString('pt-BR');
+    const commentContent = document.createElement('p');
+    commentContent.textContent = comment.text;
 
-    commentElement.innerHTML = `
-                    <p>${comment.text}</p>
-                    <p class="date">${date}</p>
-                `;
+    const commentDate = document.createElement('p');
+    commentDate.className = 'date';
+    commentDate.textContent = new Date(comment.createdAt).toLocaleDateString('pt-BR');
 
+    commentElement.appendChild(commentContent);
+    commentElement.appendChild(commentDate);
     commentsContainer.appendChild(commentElement);
   });
 }
