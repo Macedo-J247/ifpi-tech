@@ -152,18 +152,16 @@ function renderComments(postId, comments) {
   commentsContainer.innerHTML = '';
 
   comments.forEach(comment => {
-    const commentElement = document.createElement('p');
+    const commentElement = document.createElement('div');
     commentElement.className = 'comment';
 
-    const commentContent = document.createElement('p');
-    commentContent.textContent = comment.text;
+    const date = new Date(comment.createdAt).toLocaleDateString('pt-BR');
 
-    const commentDate = document.createElement('p');
-    commentDate.className = 'date';
-    commentDate.textContent = new Date(comment.createdAt).toLocaleDateString('pt-BR');
+    commentElement.innerHTML = `
+                    <p>${comment.text}</p>
+                    <p class="date">${date}</p>
+                `;
 
-    commentElement.appendChild(commentContent);
-    commentElement.appendChild(commentDate);
     commentsContainer.appendChild(commentElement);
   });
 }
