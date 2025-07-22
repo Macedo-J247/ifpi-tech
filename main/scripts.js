@@ -157,7 +157,7 @@ async function loadPosts() {
         const posts = await response.json();
 
         if (posts.length === 0 && currentPage === 1) {
-            postsContainer.innerHTML = '<p>Nenhum post encontrado com os critérios.</p>';
+            postsContainer.innerHTML = '<p style="text-align: center;"> Nenhum post encontrado com os critérios. </p>';
             loadMorePostsBtn.style.display = 'none';
             return;
         } else if (posts.length === 0) {
