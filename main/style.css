@@ -389,7 +389,7 @@ textarea {
 }
 
 .comment {
-    background-color: #3a3a3a;
+    background-color: var(--bg-alt);
     padding: 0.8rem;
     padding-top: 5px;
     margin-top: 10px;
