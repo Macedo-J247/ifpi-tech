@@ -1,0 +1,588 @@
+
+/* Melhorias para a caixa de pesquisa */
+.search {
+    display: flex; /* Para alinhar o input e o botão */
+    gap: 0.5rem; /* Espaçamento entre o input e o botão */
+    align-items: center;
+}
+
+.search input[type="search"] {
+    flex-grow: 1; /* Faz o input ocupar o espaço disponível */
+    padding-right: 2.5rem; /* Espaço para o ícone/botão interno se for o caso */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23676470" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center; /* Posição do ícone */
+    background-size: 20px; /* Tamanho do ícone */
+}
+
+.search button {
+    background-color: var(--blue);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-size: 1.2rem; /* Aumenta o tamanho do botão */
+    line-height: 1; /* Ajusta a linha do ícone */
+}
+
+.search button:hover {
+    background-color: var(--blue-cooler);
+}
+
+/* Estilo para botões de Carregar Mais */
+#loadMorePostsBtn, .loadMoreCommentsBtn {
+    display: block; /* Garante que ocupe a largura total */
+    width: 100%; /* Largura total */
+    margin-top: 1rem;
+    text-align: center;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--blue); /* Ou uma cor diferente para distinguir */
+    color: white;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#loadMorePostsBtn:hover, .loadMoreCommentsBtn:hover {
+    background-color: var(--blue-cooler);
+}
+
+/* Estilo para a seção de comentários */
+.comment-section {
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--fg-dim);
+    padding-top: 1rem;
+}
+
+/* Estilo para os botões de abrir/fechar as colunas laterais */
+.btn-esquerda, .btn-direita {
+    font-size: 2rem; /* Aumenta o tamanho do ícone */
+    width: 30px; /* Largura para o botão */
+    text-align: center;
+    background-color: var(--bg-main); /* Cor de fundo para o botão */
+    border-radius: 0 0.5rem 0.5rem 0; /* Apenas lado arredondado */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-direita {
+    border-radius: 0.5rem 0 0 0.5rem; /* Lado oposto arredondado */
+}
+
+.btn-oculto {
+    opacity: 0;
+    pointer-events: none; /* Não interage com o mouse */
+}
+
+/* Ajustes para o cabeçalho do post (ul/li) */
+.post-header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-header ul li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ajustes para a seção de comentários dentro do post */
+.comments-container {
+    margin-top: 1rem;
+}
+
+/* Estilos para a tag do input de postagem */
+#tagFilterPost {
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.05rem solid var(--fg-dim);
+    border-radius: 0.2rem;
+    background-color: var(--bg-active);
+    color: var(--fg-main);
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-alt);
+    color: var(--fg-main);
+    box-sizing: border-box;
+}
+
+#geral {
+    display: flex;
+    flex-direction: column;
+    padding-top: 65px;
+    height: 100vh;
+    width: 100%;
+}
+
+section {
+    background-color: var(--bg-main);
+    margin: 1rem 0;
+    padding: 1rem;
+    padding-top: 0px;
+    border: 0.05rem solid var(--fg-dim);
+    border-radius: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+input[type="text"], input[type="search"], textarea, select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.05rem solid var(--fg-dim);
+    border-radius: 0.2rem;
+    background-color: var(--bg-active);
+    color: var(--fg-main);
+    box-sizing: border-box;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--blue-cooler);
+}
+
+textarea {
+    resize: none;
+    font-family: inherit;
+}
+
+.btn-enviar, .btn-delete {
+    background-color: var(--blue);
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    margin-right: 0.5rem;
+}
+
+.btn-enviar:hover {
+    background-color: var(--blue-cooler);
+}
+
+.btn-delete {
+    background-color: var(--red);
+}
+
+.btn-delete:hover {
+    background-color: var(--red-cooler);
+}
+
+#header {
+    color: var(--fg-alt);
+    text-align: center;
+}
+
+#cabecalho {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    transition: top 0.2s ease-in-out;
+    z-index: 1000;
+    padding: 1rem;
+    background-color: var(--bg-main);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cabecalho-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cabecalho-conteudo h1 {
+    margin: 0;
+}
+
+#esquerda, #direita {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    padding: 1rem;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+}
+
+#esquerda {
+    float: left;
+    width: 250px;
+    height: 100%;
+    left: 0;
+    transform: translateX(-100%);
+    background-color: var(--bg-dim);
+    overflow-y: auto;
+}
+
+#esquerda.ativo {
+    transform: translateX(0);
+}
+
+.btn-esquerda {
+    left: 0;
+}
+
+.btn-direita {
+    right: 0;
+}
+
+.btn-esquerda, .btn-direita {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    cursor: pointer;
+    z-index: 999;
+    padding: 0.6rem;
+    color: var(--fg-main);
+    background-color: transparent;
+    border: none;
+    transition: opacity 0.4s ease;
+}
+
+.btn-esquerda, .btn-direita {
+  opacity: 0;
+  animation: aparecer 1s ease forwards;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-oculto {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle-coluna-btn, .fechar-menu, .fechar-nova-postagem {
+    cursor: pointer;
+    z-index: 1002;
+    padding: 0.6rem;
+    color: var(--fg-main);
+    background-color: var(--bg-main);
+    border: 1px solid var(--fg-dim);
+}
+
+#corpo {
+    display: flex;
+    flex: 1 1 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+#centro {
+    display: flow;
+    margin: auto;
+    width: 95%;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.post {
+    background-color: var(--bg-dim);
+    border: 0.05rem solid var(--fg-dim);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.1rem;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.post-tags {
+    margin: 1rem 0;
+}
+
+.tag {
+    background-color: var(--bg-inactive);
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.4rem;
+    font-size: 0.8rem;
+    border: 0.05rem solid var(--fg-dim);
+    border-radius: 0.1rem;
+}
+
+.date {
+    font-size: 0.7rem;
+}
+
+.post-content {
+    margin: 0.8rem 0;
+    line-height: 1.5;
+}
+
+.post-actions, .comment-actions {
+    align-items: center;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
+}
+
+.post-actions {
+    display: flex;
+}
+
+.comment-actions {
+    display: flow;
+}
+
+.like {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+}
+
+.like:hover {
+    background-color: var(--blue-cooler);
+}
+
+.dislike, .delete {
+    background-color: var(--red);
+    color: white;
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+}
+
+#caixa-comentario {
+    width: 100%;
+}
+
+#botoes-comentario {
+    margin-top: 5px;
+    text-align: right;
+}
+
+.comment {
+    background-color: var(--bg-cyan-subtle);
+    padding: 0.8rem;
+    padding-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 0.8rem;
+    border-left: 3px solid var(--cyan-cooler);
+    border-radius: 0.2rem;
+}
+
+.comment span {
+    margin-top: 0px;
+}
+
+.comment-form {
+    margin-top: 0.8rem;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.05rem solid var(--fg-dim);
+    box-sizing: border-box;
+    margin-bottom: 0.7rem;
+}
+
+.tags-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+#direita {
+    float: right;
+    width: 320px;
+    height: 100%;
+    right: 0;
+    transform: translateX(100%);
+    background-color: var(--bg-dim);
+    overflow-y: auto;
+}
+
+#direita.ativo {
+    transform: translateX(0);
+}
+
+#rodape {
+    display: inline-block;
+    position: relative;
+    bottom: 0;
+    padding: 1rem;
+    line-height: 50%;
+    background-color: var(--bg-main);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+    
+.rodape-coluna-1 {
+    float: left;
+    text-align: left;
+    font-size: 12px;
+}
+
+.rodape-coluna-1 p {
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.rodape-coluna-2 {
+    text-align: right;
+    font-size: 15px;
+}
+
+.rodape-coluna-2 h4 {
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+.rodape-coluna-2 ul {
+    display: inline-block;
+    text-align: left;
+}
+
+.rodape-coluna-2 li {
+    margin: 1px;
+    padding: 5px;
+}
+
+.rodape-coluna-2 a {
+    color: white;
+}
+
+.rodape-coluna-2 a:hover {
+    color: var(--blue-cooler);
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* Paleta de Cores */
+:root {
+    --bg-main: #edf4f8;
+    --fg-main: #151a27;
+    --bg-dim: #e0e7ef;
+    --fg-dim: #676470;
+    --bg-alt: #cfd8e3;
+    --fg-alt: #3f4f99;
+    --bg-active: #afb8c3;
+    --bg-inactive: #e6ecf2;
+    --red: #c3303a;
+    --red-warmer: #d00000;
+    --red-cooler: #b02440;
+    --red-faint: #8b4052;
+    --green: #007010;
+    --green-warmer: #3a6f00;
+    --green-cooler: #007047;
+    --green-faint: #4a763f;
+    --yellow: #805a1f;
+    --yellow-warmer: #8b4400;
+    --yellow-cooler: #78542f;
+    --yellow-faint: #7f4f4a;
+    --blue: #375cc6;
+    --blue-warmer: #444fcf;
+    --blue-cooler: #003faf;
+    --blue-faint: #3a5099;
+    --magenta: #80308f;
+    --magenta-warmer: #9a3a6a;
+    --magenta-cooler: #5f2fba;
+    --magenta-faint: #6a4a9f;
+    --cyan: #1f66af;
+    --cyan-warmer: #305675;
+    --cyan-cooler: #006f70;
+    --cyan-faint: #3f627f;
+    --bg-red-intense: #ff8f88;
+    --bg-green-intense: #96df80;
+    --bg-yellow-intense: #efbf00;
+    --bg-blue-intense: #cfceff;
+    --bg-magenta-intense: #df9fff;
+    --bg-cyan-intense: #88cfd0;
+    --bg-red-subtle: #f0c6cf;
+    --bg-green-subtle: #b0ebca;
+    --bg-yellow-subtle: #e4e498;
+    --bg-blue-subtle: #ccd5f7;
+    --bg-magenta-subtle: #edd3f2;
+    --bg-cyan-subtle: #b2e6f0;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-main: #131c2b;
+        --fg-main: #eaedef;
+        --bg-dim: #1d2c39;
+        --fg-dim: #969faf;
+        --bg-alt: #2a3644;
+        --fg-alt: #90a0dc;
+        --bg-active: #4a5664;
+        --bg-inactive: #1a2331;
+        --red: #ff6f6f;
+        --red-warmer: #ff7a5f;
+        --red-cooler: #ff7788;
+        --red-faint: #eaa4a4;
+        --green: #41bf4f;
+        --green-warmer: #7fce5f;
+        --green-cooler: #30c489;
+        --green-faint: #a9c99f;
+        --yellow: #d0d24f;
+        --yellow-warmer: #f0c060;
+        --yellow-cooler: #cab27f;
+        --yellow-faint: #cac89f;
+        --blue: #57b0ff;
+        --blue-warmer: #70a0ff;
+        --blue-cooler: #12b4ff;
+        --blue-faint: #9acfff;
+        --magenta: #f59acf;
+        --magenta-warmer: #fa90ea;
+        --magenta-cooler: #cf90ff;
+        --magenta-faint: #d4aaf0;
+        --cyan: #2fd0db;
+        --cyan-warmer: #7fcfdf;
+        --cyan-cooler: #65d5a8;
+        --cyan-faint: #99bfcf;
+        --bg-red-intense: #bd1f30;
+        --bg-green-intense: #107840;
+        --bg-yellow-intense: #847020;
+        --bg-blue-intense: #2f5f9f;
+        --bg-magenta-intense: #b05fcf;
+        --bg-cyan-intense: #0280b9;
+        --bg-red-subtle: #6f293a;
+        --bg-green-subtle: #1f523a;
+        --bg-yellow-subtle: #604233;
+        --bg-blue-subtle: #284477;
+        --bg-magenta-subtle: #52336b;
+        --bg-cyan-subtle: #204c68;
+    }
+}

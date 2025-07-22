@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> IFPI Tech </title>
+
+    <meta name="author" content="Grupo">
+    <meta name="description" content="Blog IFPI Tech">
+
+    <link rel="stylesheet" href="style.css" type="text/css" media="all">
+    <script src="scripts.js" defer></script> </head>
+<body>
+    <div id="geral">
+        <div id="cabecalho">
+            <header class="cabecalho-conteudo">
+                <div>
+                    <h1 style="float: left"> IFPI Tech </h1>
+                    <span style="padding: 5px">
+                    </span>
+                    <p style="float: right;">| Mural das inovações do Instituto Federal do Piauí |</p>
+                </div>
+            </header>
+        </div>
+
+        <div id="corpo">
+            <button class="btn-esquerda" type="button" onclick="toggleColuna('esquerda')" title="Abrir Menu">
+                >
+            </button>
+
+            <aside id="esquerda" class="coluna-lateral">
+                <button type="button" class="fechar-menu" onclick="toggleColuna('esquerda')">
+                    <
+                </button>
+
+                <section>
+                    <h2> Pesquisar </h2>
+                    <div class="search">
+                        <label for="search"> Buscar posts: </label>
+                        <input type="search" id="search" placeholder="Buscar por título ou conteúdo...">
+                        <button type="button" id="searchButton"> &#9654; </button> </div>
+                </section>
+
+                <section id="tag">
+                    <h2>Filtrar Posts</h2>
+                    <div class="form-group">
+                        <label for="tagFilter"> Filtrar por: </label>
+                        <select id="tagFilter">
+                            <option value="todas"> Todas as Tags</option>
+                            <option value="tecnologia"> Tecnologia </option>
+                            <option value="empreendedorismo"> Empreendedorismo </option>
+                            <option value="sustentabilidade"> Sustentabilidade </option>
+                            </select>
+                    </div>
+                </section>
+
+                <section id="agrupamento">
+                    <h2>Classificar Posts</h2>
+                    <div class="form-group">
+                        <label for="groupFilter"> Classificar por: </label>
+                        <select id="groupFilter">
+                            <option value="todas"> Nenhum Critério </option>
+                            <option value="Mais Recente"> Mais Recente </option>
+                            <option value="Mais Antigo"> Mais Antigo </option>
+                            <option value="Maior número de likes"> Maior número de likes </option>
+                            <option value="Menor número de likes"> Menor número de likes </option>
+                            <option value="Maior número de dislikes"> Maior número de dislikes </option>
+                            <option value="Menor número de dislikes"> Menor número de dislikes </option>
+                            <option value="Maior número de comentários"> Maior número de comentários </option>
+                            <option value="Menor número de comentários"> Menor número de comentários </option>
+                        </select>
+                    </div>
+                </section>
+            </aside>
+
+            <main id="centro">
+                <div id="posts-container">
+                    </div>
+                <button id="loadMorePostsBtn" type="button" class="btn-enviar" style="display: none;">Carregar Mais Posts</button>
+            </main>
+
+            <button class="btn-direita" type="button" onclick="toggleColuna('direita')" title="Nova Postagem">
+                <
+            </button>
+
+            <aside id="direita" class="coluna-lateral">
+                <div id="container-fechar">
+                    <button class="fechar-nova-postagem" type="button" onclick="toggleColuna('direita')">
+                        >
+                    </button>
+                </div>
+
+                <section>
+                    <form id="postForm">
+                        <h2> Nova postagem </h2>
+
+                        <div class="form-group">
+                            <label for="title">Título</label>
+                            <input type="text" id="title" placeholder="Digite" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tagFilterPost"> Definir tag como: </label>
+                            <select id="tagFilterPost" required> <option value="todas"> Nenhuma Tag </option>
+                                <option value="tecnologia"> Tecnologia </option>
+                                <option value="empreendedorismo"> Empreendedorismo </option>
+                                <option value="sustentabilidade"> Sustentabilidade </option>
+                                <option value="tecnologia-empreendedorismo"> Tecnologia e Empreendedorismo </option>
+                                <option value="tecnologia-sustentabilidade"> Tecnologia e Sustentabilidade</option>
+                                <option value="empreendedorismo-sustentabilidade"> Empreendedorismo e Sustentabilidade </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contentPost"> Conteúdo </label> <textarea id="contentPost" rows="5" placeholder="Digite aqui" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-enviar"> Publicar </button>
+                        <button type="button" class="btn-delete" onclick="document.getElementById('postForm').reset()"> Limpar </button>
+                    </form>
+                </section>
+            </aside>
+        </div>
+
+        <div id="rodape">
+            <div class="rodape-coluna-1">
+                <h4> Sobre </h4>
+                <p>
+                    Simulação do comportamento de uma rede social. <br>
+                    Feita por alunos de ADS do IPFI Teresina central
+                </p>
+
+                <p>
+                    &copy; 2025 IFPI Tech. Todos os direitos reservados.
+                </p>
+            </div>
+
+            <div class="rodape-coluna-2">
+                <h4> Github dos integrantes do grupo: </h4>
+                <ul>
+                    <li><a href=""> Hélio Mendes </a></li>
+                    <li><a href=""> José Macêdo </a></li>
+                    <li><a href=""> Emanoel Sousa </a></li>
+                    <li><a href=""> Rafael Silva </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para as barras laterais das páginas (mantida aqui para referência, mas a lógica está no scripts.js)
+        // Isso é para garantir que os botões do HTML continuem funcionando, chamando as funções expostas pelo scripts.js
+        // No entanto, é melhor usar event listeners no scripts.js para um código mais limpo e modular.
+
+        // Código de rolagem do cabeçalho (já existia)
+        window.addEventListener("load", () => {
+            const header = document.getElementById("cabecalho");
+            header.style.top = "0";
+        });
+
+        let lastScrollTop = 0;
+        const header = document.getElementById("cabecalho");
+
+        window.addEventListener("scroll", function () {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                header.style.top = "-100px";
+            } else {
+                header.style.top = "0";
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+
+        // Funções para contabilizar as curtidas dos posts e comentários (AGORA SERÃO TRATADAS PELO scripts.js)
+        // Removidas as implementações diretas aqui para evitar duplicação e garantir que o JS lide com isso.
+        // As chamadas onclick nos botões no HTML serão alteradas dinamicamente pelo createPostElement no scripts.js
+        // para chamar a função global `handleLikeDislike`.
+    </script>
+</body>
+</html>
