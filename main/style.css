@@ -187,6 +187,7 @@ textarea {
     position: fixed;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex: 0 0 auto;
     width: 100%;
     height: auto;
@@ -201,13 +202,37 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
 }
 
 .cabecalho-conteudo h1 {
     margin: 0;
 }
 
-#esquerda, #direita {
+.cabecalho-conteudo p {
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+.toggle-theme-btn {
+    background: var(--blue);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+    margin-right: 2rem;
+}
+
+.toggle-theme-btn:hover {
+    background: var(--blue-cooler);
+}
+
+#direita {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -220,44 +245,25 @@ textarea {
 }
 
 #esquerda {
-    float: left;
+    position: fixed; 
+    top: 65px; /* altura do header */
+    left: 0;
     width: 250px;
-    height: 100%;
-    left: 0;
-    transform: translateX(-100%);
+    height: 100%; /* altura total menos o cabeçalho */
     background-color: var(--bg-dim);
+    padding: 0.8rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
+    z-index: 100; /* abaixo do cabeçalho */
+    font-size: 0.9rem; /* fontes menores */
+    line-height: 1.3;
+    transition: top 0.3s ease; /* animação suave */
 }
 
-#esquerda.ativo {
-    transform: translateX(0);
-}
 
-.btn-esquerda {
-    left: 0;
-}
-
-.btn-direita {
-    right: 0;
-}
-
-.btn-esquerda, .btn-direita {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    height: 100vh;
-    cursor: pointer;
-    z-index: 999;
-    padding: 0.6rem;
-    color: var(--fg-main);
-    background-color: transparent;
-    border: none;
-    transition: opacity 0.4s ease;
-}
-
-.btn-esquerda, .btn-direita {
-  opacity: 0;
-  animation: aparecer 1s ease forwards;
+#esquerda, #esquerda * {
+    font-size: 0.9rem; /* um pouco menor que o centro */
+    line-height: 1.3;
 }
 
 @keyframes aparecer {
@@ -294,9 +300,8 @@ textarea {
 }
 
 #centro {
-    display: flow;
-    margin: auto;
-    width: 95%;
+    margin-left: 280px; /* espaço da aba esquerda */
+    width: calc(100% - 250px);
     padding: 1rem;
     overflow-y: auto;
 }
@@ -384,7 +389,7 @@ textarea {
 }
 
 .comment {
-    background-color: var(--bg-cyan-subtle);
+    background-color: #3a3a3a;
     padding: 0.8rem;
     padding-top: 5px;
     margin-top: 10px;
@@ -429,12 +434,36 @@ textarea {
     transform: translateX(0);
 }
 
+.btn-flutuante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #3d80ad;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 1000;
+}
+
+.btn-flutuante:hover {
+    background-color: #3d80ad;
+    transform: scale(1.1);
+}
+
+
 #rodape {
     display: inline-block;
     position: relative;
     bottom: 0;
     padding: 1rem;
     line-height: 50%;
+    z-index: 500;
     background-color: var(--bg-main);
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -488,97 +517,31 @@ ul {
 
 /* Paleta de Cores */
 :root {
-    --bg-main: #edf4f8;
-    --fg-main: #151a27;
-    --bg-dim: #e0e7ef;
-    --fg-dim: #676470;
-    --bg-alt: #cfd8e3;
-    --fg-alt: #3f4f99;
-    --bg-active: #afb8c3;
-    --bg-inactive: #e6ecf2;
-    --red: #c3303a;
-    --red-warmer: #d00000;
-    --red-cooler: #b02440;
-    --red-faint: #8b4052;
-    --green: #007010;
-    --green-warmer: #3a6f00;
-    --green-cooler: #007047;
-    --green-faint: #4a763f;
-    --yellow: #805a1f;
-    --yellow-warmer: #8b4400;
-    --yellow-cooler: #78542f;
-    --yellow-faint: #7f4f4a;
-    --blue: #375cc6;
-    --blue-warmer: #444fcf;
-    --blue-cooler: #003faf;
-    --blue-faint: #3a5099;
-    --magenta: #80308f;
-    --magenta-warmer: #9a3a6a;
-    --magenta-cooler: #5f2fba;
-    --magenta-faint: #6a4a9f;
-    --cyan: #1f66af;
-    --cyan-warmer: #305675;
-    --cyan-cooler: #006f70;
-    --cyan-faint: #3f627f;
-    --bg-red-intense: #ff8f88;
-    --bg-green-intense: #96df80;
-    --bg-yellow-intense: #efbf00;
-    --bg-blue-intense: #cfceff;
-    --bg-magenta-intense: #df9fff;
-    --bg-cyan-intense: #88cfd0;
-    --bg-red-subtle: #f0c6cf;
-    --bg-green-subtle: #b0ebca;
-    --bg-yellow-subtle: #e4e498;
-    --bg-blue-subtle: #ccd5f7;
-    --bg-magenta-subtle: #edd3f2;
-    --bg-cyan-subtle: #b2e6f0;
+    --bg-main: #f8f9fa;        /* fundo principal */
+    --fg-main: #222;           /* texto */
+    --bg-dim: #e9ecef;         /* colunas */
+    --fg-dim: #666;
+    --bg-alt: #dee2e6;         /* cabeçalho/rodapé */
+    --fg-alt: #333;
+    --bg-active: #ced4da;
+    --bg-inactive: #f1f3f5;
+    --blue: #0077b6;
+    --blue-cooler: #005f8d;
+    --red: #c92a2a;
+    --red-cooler: #a61e1e;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-main: #131c2b;
-        --fg-main: #eaedef;
-        --bg-dim: #1d2c39;
-        --fg-dim: #969faf;
-        --bg-alt: #2a3644;
-        --fg-alt: #90a0dc;
-        --bg-active: #4a5664;
-        --bg-inactive: #1a2331;
-        --red: #ff6f6f;
-        --red-warmer: #ff7a5f;
-        --red-cooler: #ff7788;
-        --red-faint: #eaa4a4;
-        --green: #41bf4f;
-        --green-warmer: #7fce5f;
-        --green-cooler: #30c489;
-        --green-faint: #a9c99f;
-        --yellow: #d0d24f;
-        --yellow-warmer: #f0c060;
-        --yellow-cooler: #cab27f;
-        --yellow-faint: #cac89f;
-        --blue: #57b0ff;
-        --blue-warmer: #70a0ff;
-        --blue-cooler: #12b4ff;
-        --blue-faint: #9acfff;
-        --magenta: #f59acf;
-        --magenta-warmer: #fa90ea;
-        --magenta-cooler: #cf90ff;
-        --magenta-faint: #d4aaf0;
-        --cyan: #2fd0db;
-        --cyan-warmer: #7fcfdf;
-        --cyan-cooler: #65d5a8;
-        --cyan-faint: #99bfcf;
-        --bg-red-intense: #bd1f30;
-        --bg-green-intense: #107840;
-        --bg-yellow-intense: #847020;
-        --bg-blue-intense: #2f5f9f;
-        --bg-magenta-intense: #b05fcf;
-        --bg-cyan-intense: #0280b9;
-        --bg-red-subtle: #6f293a;
-        --bg-green-subtle: #1f523a;
-        --bg-yellow-subtle: #604233;
-        --bg-blue-subtle: #284477;
-        --bg-magenta-subtle: #52336b;
-        --bg-cyan-subtle: #204c68;
-    }
+:root[data-theme='dark'] {
+    --bg-main: #1c1c1c;
+    --fg-main: #e5e5e5;
+    --bg-dim: #2a2a2a;
+    --fg-dim: #aaa;
+    --bg-alt: #242424;
+    --fg-alt: #ddd;
+    --bg-active: #333;
+    --bg-inactive: #2e2e2e;
+    --blue: #4da8da;
+    --blue-cooler: #1f7aa8;
+    --red: #e05252;
+    --red-cooler: #b33b3b;
 }

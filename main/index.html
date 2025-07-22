@@ -15,25 +15,14 @@
     <div id="geral">
         <div id="cabecalho">
             <header class="cabecalho-conteudo">
-                <div>
-                    <h1 style="float: left"> IFPI Tech </h1>
-                    <span style="padding: 5px">
-                    </span>
-                    <p style="float: right;">| Mural das inovações do Instituto Federal do Piauí |</p>
-                </div>
+                <h1>IFPI Tech</h1>
+                <p>| Mural das inovações do Instituto Federal do Piauí |</p>
+                <button id="toggle-theme" class="toggle-theme-btn">🌙</button>
             </header>
         </div>
 
         <div id="corpo">
-            <button class="btn-esquerda" type="button" onclick="toggleColuna('esquerda')" title="Abrir Menu">
-                >
-            </button>
-
             <aside id="esquerda" class="coluna-lateral">
-                <button type="button" class="fechar-menu" onclick="toggleColuna('esquerda')">
-                    <
-                </button>
-
                 <section>
                     <h2> Pesquisar </h2>
                         <div class="search">
@@ -42,7 +31,7 @@
 
                         <div class="search">
                             <input type="search" id="search" placeholder="Digite...">
-                            <button type="button" id="searchButton"> &#9654; </button>
+                            <button type="button" id="searchButton"><svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#e3e3e3"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></button>
                         </div>
                 </section>
 
@@ -89,8 +78,8 @@
                 <button id="loadMorePostsBtn" type="button" class="btn-enviar" style="display: none;">Carregar Mais Posts</button>
             </main>
 
-            <button class="btn-direita" type="button" onclick="toggleColuna('direita')" title="Nova Postagem">
-                <
+            <button class="btn-flutuante" type="button" onclick="toggleColuna('direita')" title="Nova Postagem">
+                +
             </button>
 
             <aside id="direita" class="coluna-lateral">
@@ -160,6 +149,63 @@
     </div>
 
     <script>
+        const esquerda = document.getElementById('esquerda');
+        const cabecalho = document.getElementById('cabecalho');
+
+        let cabecalhoAltura = cabecalho.offsetHeight; 
+        let ultimoScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollAtual = window.scrollY;
+
+            if (scrollAtual > ultimoScroll) {
+                // Scroll para baixo (header some)
+                esquerda.style.top = '0px';
+            } else {
+                // Scroll para cima (header volta)
+                esquerda.style.top = cabecalhoAltura + 'px';
+            }
+
+            ultimoScroll = scrollAtual <= 0 ? 0 : scrollAtual;
+        });
+
+        document.getElementById('toggle-theme').addEventListener('click', () => {
+            const html = document.documentElement;
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        const toggleBtn = document.getElementById('toggle-theme');
+        const root = document.documentElement;
+
+        // Carregar preferência salva
+        if (localStorage.getItem('theme') === 'dark') {
+            root.classList.add('dark-mode');
+            toggleBtn.textContent = '☀️'; // Ícone de sol para voltar ao claro
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            root.classList.toggle('dark-mode');
+            const isDark = root.classList.contains('dark-mode');
+            
+            // Troca ícone
+            toggleBtn.textContent = isDark ? '☀️' : '🌙';
+            
+            // Salva preferência
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Aplicar o tema salvo
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        });
+
         // Função para as barras laterais das páginas (mantida aqui para referência, mas a lógica está no scripts.js)
         // Isso é para garantir que os botões do HTML continuem funcionando, chamando as funções expostas pelo scripts.js
         // No entanto, é melhor usar event listeners no scripts.js para um código mais limpo e modular.

@@ -345,7 +345,7 @@ async function loadCommentsForPost(postId, commentsContainer, page = 1) {
         }
 
         if (newComments.length === 0 && page === 1) {
-            commentsContainer.innerHTML = '<p>Nenhum comentário ainda. Seja o primeiro a comentar!</p>';
+            commentsContainer.innerHTML = '<p style="text-align: center;">Nenhum comentário ainda. Seja o primeiro a comentar!</p>';
             const loadMoreBtn = commentsContainer.nextElementSibling;
             if (loadMoreBtn && loadMoreBtn.classList.contains('loadMoreCommentsBtn')) {
                 loadMoreBtn.style.display = 'none';
