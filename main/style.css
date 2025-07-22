@@ -502,7 +502,7 @@ textarea {
 }
 
 .rodape-coluna-2 a {
-    color: white;
+    color: var(--fg-main);
 }
 
 .rodape-coluna-2 a:hover {
