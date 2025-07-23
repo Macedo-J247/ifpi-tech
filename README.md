@@ -1,5 +1,10 @@
 # Rede Social do IFPI
 
+## Link para o vídeo (google drive): https://drive.google.com/file/d/1shItAlfwGKjL6EOJDVhSnLqzKyeOWieO/view?usp=sharing
+## Link para o vídeo (YouTube): https://youtu.be/3qIYUjP-dI0
+
+<hr>
+
 Aplicação que implementa um blog com comentários.
 
 ## Setup
